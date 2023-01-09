@@ -17,9 +17,9 @@ import (
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	"github.com/merlion-zone/merlion/x/erc20/client/cli"
-	"github.com/merlion-zone/merlion/x/erc20/keeper"
-	"github.com/merlion-zone/merlion/x/erc20/types"
+	"github.com/warmage-sports/warmage/x/erc20/client/cli"
+	"github.com/warmage-sports/warmage/x/erc20/keeper"
+	"github.com/warmage-sports/warmage/x/erc20/types"
 )
 
 var (

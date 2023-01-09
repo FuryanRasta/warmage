@@ -3,7 +3,7 @@ package types_test
 import (
 	"testing"
 
-	"github.com/merlion-zone/merlion/x/oracle/types"
+	"github.com/warmage-sports/warmage/x/oracle/types"
 	"github.com/stretchr/testify/require"
 )
 

@@ -340,7 +340,7 @@
             return a.call(t)
         }, (t.exports = function(t, e, n, a) {
             var c = "function" == typeof n;
-            c && (o(n, "name") || i(n, "name", e)), t[e] !== n && (c && (o(n, u) || i(n, u, t[e] ? "" + t[e] : s.join(String(e)))), t === r ? t[e] = n : a ? t[e] ? t[e] = n : i(t, e, n) : (delete t[e], i(t, e, n)))
+            c && (o(n, "name") || i(n, "name", e)), t[e] !== n && (c && (o(n, u) || i(n, u, t[e] ? "" + t[e] : s.merge(String(e)))), t === r ? t[e] = n : a ? t[e] ? t[e] = n : i(t, e, n) : (delete t[e], i(t, e, n)))
         })(Function.prototype, "toString", function() {
             return "function" == typeof this && this[u] || a.call(this)
         })
@@ -675,11 +675,11 @@
                 for (var e = {}, n = 0; n < 10; n++) e["_" + String.fromCharCode(n)] = n;
                 if ("0123456789" !== Object.getOwnPropertyNames(e).map(function(t) {
                     return e[t]
-                }).join("")) return !1;
+                }).merge("")) return !1;
                 var r = {};
                 return "abcdefghijklmnopqrst".split("").forEach(function(t) {
                     r[t] = t
-                }), "abcdefghijklmnopqrst" === Object.keys(Object.assign({}, r)).join("")
+                }), "abcdefghijklmnopqrst" === Object.keys(Object.assign({}, r)).merge("")
             } catch (t) {
                 return !1
             }
@@ -1260,7 +1260,7 @@
             }, s.prototype.inspect = function() {
                 var t = "",
                     n = e.INSPECT_MAX_BYTES;
-                return this.length > 0 && (t = this.toString("hex", 0, n).match(/.{2}/g).join(" "), this.length > n && (t += " ... ")), "<Buffer " + t + ">"
+                return this.length > 0 && (t = this.toString("hex", 0, n).match(/.{2}/g).merge(" "), this.length > n && (t += " ... ")), "<Buffer " + t + ">"
             }, s.prototype.compare = function(t, e, n, r, i) {
                 if (!s.isBuffer(t)) throw new TypeError("Argument must be a Buffer");
                 if (void 0 === e && (e = 0), void 0 === n && (n = t ? t.length : 0), void 0 === r && (r = 0), void 0 === i && (i = this.length), e < 0 || n > t.length || r < 0 || i > this.length) throw new RangeError("out of range index");
@@ -3243,7 +3243,7 @@
             }, e.serializeSearch = function(t) {
                 return (0, a.default)(t).map(function(e) {
                     return encodeURIComponent(e) + "=" + encodeURIComponent(t[e])
-                }).join("&")
+                }).merge("&")
             }, e.btoa = function(e) {
                 return (e instanceof t ? e : new t(e.toString(), "utf-8")).toString("base64")
             }, e.sorters = {
@@ -3264,9 +3264,9 @@
                 var e = [];
                 for (var n in t) {
                     var r = t[n];
-                    void 0 !== r && "" !== r && e.push([n, "=", encodeURIComponent(r).replace(/%20/g, "+")].join(""))
+                    void 0 !== r && "" !== r && e.push([n, "=", encodeURIComponent(r).replace(/%20/g, "+")].merge(""))
                 }
-                return e.join("&")
+                return e.merge("&")
             }, e.shallowEqualKeys = function(t, e, n) {
                 return !!(0, d.default)(n, function(n) {
                     return (0, y.default)(t[n], e[n])
@@ -5355,7 +5355,7 @@
                     return "[Iterable]"
                 },
                 __toString: function(t, e) {
-                    return 0 === this.size ? t + e : t + " " + this.toSeq().map(this.__toStringMapper).join(", ") + " " + e
+                    return 0 === this.size ? t + e : t + " " + this.toSeq().map(this.__toStringMapper).merge(", ") + " " + e
                 },
                 concat: function() {
                     return He(this, function(t, e) {
@@ -5404,7 +5404,7 @@
                 forEach: function(t, e) {
                     return Dt(this.size), this.__iterate(e ? t.bind(e) : t)
                 },
-                join: function(t) {
+                merge: function(t) {
                     Dt(this.size), t = void 0 !== t ? "" + t : ",";
                     var e = "",
                         n = !0;
@@ -6152,7 +6152,7 @@
             }
 
             function T(t, e) {
-                return 0 === e.length ? null : (e.objectMode ? n = e.buffer.shift() : !t || t >= e.length ? (n = e.decoder ? e.buffer.join("") : 1 === e.buffer.length ? e.buffer.head.data : e.buffer.concat(e.length), e.buffer.clear()) : n = function(t, e, n) {
+                return 0 === e.length ? null : (e.objectMode ? n = e.buffer.shift() : !t || t >= e.length ? (n = e.decoder ? e.buffer.merge("") : 1 === e.buffer.length ? e.buffer.head.data : e.buffer.concat(e.length), e.buffer.clear()) : n = function(t, e, n) {
                     var r;
                     t < e.head.data.length ? (r = e.head.data.slice(0, t), e.head.data = e.head.data.slice(t)) : r = t === e.head.data.length ? e.shift() : n ? function(t, e) {
                         var n = e.head,
@@ -6640,7 +6640,7 @@
             var e, n = 0;
             if (a[t]) return a[t];
             for (e = []; t--;) e.push("a" + (++n).toString(36));
-            return new Function("fn", "return function (" + e.join(", ") + ") { return fn.apply(this, arguments); };")
+            return new Function("fn", "return function (" + e.merge(", ") + ") { return fn.apply(this, arguments); };")
         }, t.exports = function(t, e) {
             var n;
             if (e = s(e), t.length === e) return t;
@@ -7448,7 +7448,7 @@
                     if (e = +arguments[u++], i(e, 1114111) !== e) throw RangeError(e + " is not a valid code point");
                     n.push(e < 65536 ? o(e) : o(55296 + ((e -= 65536) >> 10), e % 1024 + 56320))
                 }
-                return n.join("")
+                return n.merge("")
             }
         })
     }, function(t, e, n) {
@@ -7458,7 +7458,7 @@
         r(r.S, "String", {
             raw: function(t) {
                 for (var e = i(t.raw), n = o(e.length), r = arguments.length, u = [], a = 0; n > a;) u.push(String(e[a++])), a < r && u.push(String(arguments[a]));
-                return u.join("")
+                return u.merge("")
             }
         })
     }, function(t, e, n) {
@@ -8297,7 +8297,7 @@
                     } else if ("object" === h) {
                         var x = "",
                             S = String(e);
-                        r("31", "[object Object]" === S ? "object with keys {" + Object.keys(e).join(", ") + "}" : S, x)
+                        r("31", "[object Object]" === S ? "object with keys {" + Object.keys(e).merge(", ") + "}" : S, x)
                     }
                 }
                 return d
@@ -9108,7 +9108,7 @@
         }, e.fromByteArray = function(t) {
             for (var e, n = t.length, i = n % 3, o = [], u = 0, a = n - i; u < a; u += 16383) o.push(f(t, u, u + 16383 > a ? a : u + 16383));
             1 === i ? (e = t[n - 1], o.push(r[e >> 2] + r[e << 4 & 63] + "==")) : 2 === i && (e = (t[n - 2] << 8) + t[n - 1], o.push(r[e >> 10] + r[e >> 4 & 63] + r[e << 2 & 63] + "="));
-            return o.join("")
+            return o.merge("")
         };
         for (var r = [], i = [], o = "undefined" != typeof Uint8Array ? Uint8Array : Array, u = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/", a = 0, s = u.length; a < s; ++a) r[a] = u[a], i[u.charCodeAt(a)] = a;
 
@@ -9121,7 +9121,7 @@
 
         function f(t, e, n) {
             for (var i, o, u = [], a = e; a < n; a += 3) i = (t[a] << 16 & 16711680) + (t[a + 1] << 8 & 65280) + (255 & t[a + 2]), u.push(r[(o = i) >> 18 & 63] + r[o >> 12 & 63] + r[o >> 6 & 63] + r[63 & o]);
-            return u.join("")
+            return u.merge("")
         }
         i["-".charCodeAt(0)] = 62, i["_".charCodeAt(0)] = 63
     }, function(t, e) {
@@ -9243,7 +9243,7 @@
                 r = "abcdefghijklmnopqrst";
             return t[n] = 7, r.split("").forEach(function(t) {
                 e[t] = t
-            }), 7 != s({}, t)[n] || Object.keys(s({}, e)).join("") != r
+            }), 7 != s({}, t)[n] || Object.keys(s({}, e)).merge("") != r
         }) ? function(t, e) {
             for (var n = u(t), s = arguments.length, c = 1, f = i.f, l = o.f; s > c;)
                 for (var p, h = a(arguments[c++]), d = f ? r(h).concat(f(h)) : r(h), v = d.length, y = 0; v > y;) l.call(h, p = d[y++]) && (n[p] = h[p]);
@@ -9341,7 +9341,7 @@
                 e = u(e);
                 var n = i(e) ? o(e) : void 0,
                     a = n ? n[0] : e.charAt(0),
-                    s = n ? r(n, 1).join("") : e.slice(1);
+                    s = n ? r(n, 1).merge("") : e.slice(1);
                 return a[t]() + s
             }
         }
@@ -9378,8 +9378,8 @@
             u = "(?:\\ud83c[\\udde6-\\uddff]){2}",
             a = "[\\ud800-\\udbff][\\udc00-\\udfff]",
             s = "(?:" + r + "|" + i + ")" + "?",
-            c = "[\\ufe0e\\ufe0f]?" + s + ("(?:\\u200d(?:" + [o, u, a].join("|") + ")[\\ufe0e\\ufe0f]?" + s + ")*"),
-            f = "(?:" + [o + r + "?", r, u, a, n].join("|") + ")",
+            c = "[\\ufe0e\\ufe0f]?" + s + ("(?:\\u200d(?:" + [o, u, a].merge("|") + ")[\\ufe0e\\ufe0f]?" + s + ")*"),
+            f = "(?:" + [o + r + "?", r, u, a, n].merge("|") + ")",
             l = RegExp(i + "(?=" + i + ")|" + f + c, "g");
         t.exports = function(t) {
             return t.match(l) || []
@@ -9640,9 +9640,9 @@
             l = "(?:" + u + "|" + a + ")",
             p = "(?:" + f + "|" + a + ")",
             h = "(?:[\\u0300-\\u036f\\ufe20-\\ufe2f\\u20d0-\\u20ff]|\\ud83c[\\udffb-\\udfff])?",
-            d = "[\\ufe0e\\ufe0f]?" + h + ("(?:\\u200d(?:" + ["[^\\ud800-\\udfff]", s, c].join("|") + ")[\\ufe0e\\ufe0f]?" + h + ")*"),
-            v = "(?:" + [o, s, c].join("|") + ")" + d,
-            y = RegExp([f + "?" + u + "+(?:['’](?:d|ll|m|re|s|t|ve))?(?=" + [r, f, "$"].join("|") + ")", p + "+(?:['’](?:D|LL|M|RE|S|T|VE))?(?=" + [r, f + l, "$"].join("|") + ")", f + "?" + l + "+(?:['’](?:d|ll|m|re|s|t|ve))?", f + "+(?:['’](?:D|LL|M|RE|S|T|VE))?", "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])", "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])", i, v].join("|"), "g");
+            d = "[\\ufe0e\\ufe0f]?" + h + ("(?:\\u200d(?:" + ["[^\\ud800-\\udfff]", s, c].merge("|") + ")[\\ufe0e\\ufe0f]?" + h + ")*"),
+            v = "(?:" + [o, s, c].merge("|") + ")" + d,
+            y = RegExp([f + "?" + u + "+(?:['’](?:d|ll|m|re|s|t|ve))?(?=" + [r, f, "$"].merge("|") + ")", p + "+(?:['’](?:D|LL|M|RE|S|T|VE))?(?=" + [r, f + l, "$"].merge("|") + ")", f + "?" + l + "+(?:['’](?:d|ll|m|re|s|t|ve))?", f + "+(?:['’](?:D|LL|M|RE|S|T|VE))?", "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])", "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])", i, v].merge("|"), "g");
         t.exports = function(t) {
             return t.match(y) || []
         }
@@ -10608,7 +10608,7 @@
 
             function u(t, e, n) {
                 n = n || 0;
-                var i, o, a = (i = e, new Array(n || 0).join(i || "")),
+                var i, o, a = (i = e, new Array(n || 0).merge(i || "")),
                     s = t;
                 if ("object" == typeof t && ((s = t[o = Object.keys(t)[0]]) && s._elem)) return s._elem.name = o, s._elem.icount = n, s._elem.indent = e, s._elem.indents = a, s._elem.interrupt = s, s._elem;
                 var c, f = [],
@@ -10660,7 +10660,7 @@
                 function o(e) {
                     return !!e.interrupt && (e.interrupt.append = t, e.interrupt.end = i, e.interrupt = !1, t(!0), !0)
                 }
-                if (t(!1, e.indents + (e.name ? "<" + e.name : "") + (e.attributes.length ? " " + e.attributes.join(" ") : "") + (r ? e.name ? ">" : "" : e.name ? "/>" : "") + (e.indent && r > 1 ? "\n" : "")), !r) return t(!1, e.indent ? "\n" : "");
+                if (t(!1, e.indents + (e.name ? "<" + e.name : "") + (e.attributes.length ? " " + e.attributes.merge(" ") : "") + (r ? e.name ? ">" : "" : e.name ? "/>" : "") + (e.indent && r > 1 ? "\n" : "")), !r) return t(!1, e.indent ? "\n" : "");
                 o(e) || i()
             }
             t.exports = function(t, n) {
@@ -10808,7 +10808,7 @@
                 }
             }, t.prototype.clear = function() {
                 this.head = this.tail = null, this.length = 0
-            }, t.prototype.join = function(t) {
+            }, t.prototype.merge = function(t) {
                 if (0 === this.length) return "";
                 for (var e = this.head, n = "" + e.data; e = e.next;) n += t + e.data;
                 return n

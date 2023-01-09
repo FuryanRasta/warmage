@@ -2,7 +2,7 @@ package keeper
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/merlion-zone/merlion/x/ve/types"
+	"github.com/warmage-sports/warmage/x/ve/types"
 )
 
 // SetTotalLockedAmount sets total locked amount

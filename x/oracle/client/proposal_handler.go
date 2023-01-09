@@ -2,8 +2,8 @@ package client
 
 import (
 	govclient "github.com/cosmos/cosmos-sdk/x/gov/client"
-	"github.com/merlion-zone/merlion/x/oracle/client/cli"
-	"github.com/merlion-zone/merlion/x/oracle/client/rest"
+	"github.com/warmage-sports/warmage/x/oracle/client/cli"
+	"github.com/warmage-sports/warmage/x/oracle/client/rest"
 )
 
 var (

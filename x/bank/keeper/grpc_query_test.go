@@ -8,7 +8,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/query"
 	"github.com/cosmos/cosmos-sdk/x/bank/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	mertypes "github.com/merlion-zone/merlion/types"
+	wartypes "github.com/warmage-sports/warmage/types"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -19,7 +19,7 @@ func (suite *KeeperTestSuite) TestKeeper_Balance() {
 	var (
 		t     = suite.T()
 		k     = suite.app.BankKeeper
-		denom = mertypes.AttoLionDenom
+		denom = wartypes.AttoMageDenom
 	)
 
 	res, err := k.Balance(sdk.WrapSDKContext(suite.ctx), nil)
@@ -51,7 +51,7 @@ func (suite *KeeperTestSuite) TestKeeper_AllBalances() {
 	var (
 		t     = suite.T()
 		k     = suite.app.BankKeeper
-		denom = mertypes.AttoLionDenom
+		denom = wartypes.AttoMageDenom
 	)
 
 	req := &types.QueryAllBalancesRequest{
@@ -69,7 +69,7 @@ func (suite *KeeperTestSuite) TestKeeper_SpendableBalances() {
 	var (
 		t     = suite.T()
 		k     = suite.app.BankKeeper
-		denom = mertypes.AttoLionDenom
+		denom = wartypes.AttoMageDenom
 	)
 
 	req := &types.QuerySpendableBalancesRequest{
@@ -87,7 +87,7 @@ func (suite *KeeperTestSuite) TestKeeper_TotalSupply() {
 	var (
 		t     = suite.T()
 		k     = suite.app.BankKeeper
-		denom = mertypes.AttoLionDenom
+		denom = wartypes.AttoMageDenom
 	)
 
 	req := &types.QueryTotalSupplyRequest{
@@ -107,7 +107,7 @@ func (suite *KeeperTestSuite) TestKeeper_SupplyOf() {
 	var (
 		t     = suite.T()
 		k     = suite.app.BankKeeper
-		denom = mertypes.AttoLionDenom
+		denom = wartypes.AttoMageDenom
 	)
 
 	res, err := k.SupplyOf(sdk.WrapSDKContext(suite.ctx), nil)
@@ -149,20 +149,20 @@ func (suite *KeeperTestSuite) TestKeeper_DenomsMetadata() {
 	var (
 		t        = suite.T()
 		k        = suite.app.BankKeeper
-		denom    = mertypes.MicroUSMDenom
+		denom    = wartypes.MicroUSFDenom
 		base     = denom
 		display  = base[1:]
-		uusmMeta = banktypes.Metadata{
-			Description: "The native stable token of the Merlion.",
+		uusfMeta = banktypes.Metadata{
+			Description: "The native stable token of the Warmage.",
 			DenomUnits: []*banktypes.DenomUnit{
-				{Denom: "u" + display, Exponent: uint32(0), Aliases: []string{"micro" + display}}, // e.g., uusm
+				{Denom: "u" + display, Exponent: uint32(0), Aliases: []string{"micro" + display}}, // e.g., uusf
 				{Denom: "m" + display, Exponent: uint32(3), Aliases: []string{"milli" + display}}, // e.g., musm
-				{Denom: display, Exponent: uint32(6), Aliases: []string{""}},                      // e.g., usm
+				{Denom: display, Exponent: uint32(6), Aliases: []string{""}},                      // e.g., usf
 			},
 			Base:    base,
 			Display: display,
-			Name:    strings.ToUpper(display), // e.g., USM
-			Symbol:  strings.ToUpper(display), // e.g., USM
+			Name:    strings.ToUpper(display), // e.g., USF
+			Symbol:  strings.ToUpper(display), // e.g., USF
 		}
 	)
 
@@ -173,13 +173,13 @@ func (suite *KeeperTestSuite) TestKeeper_DenomsMetadata() {
 	require.NoError(t, err)
 	meta := res.Metadatas[0]
 	require.Equal(t, 1, len(res.Metadatas))
-	require.Equal(t, uusmMeta.Description, meta.Description)
-	require.Equal(t, uusmMeta.Base, meta.Base)
-	require.Equal(t, uusmMeta.Display, meta.Display)
-	require.Equal(t, uusmMeta.Name, meta.Name)
-	require.Equal(t, uusmMeta.Symbol, meta.Symbol)
-	require.Equal(t, uusmMeta.DenomUnits[0], meta.DenomUnits[0])
-	require.Equal(t, uusmMeta.DenomUnits[1], meta.DenomUnits[1])
+	require.Equal(t, uusfMeta.Description, meta.Description)
+	require.Equal(t, uusfMeta.Base, meta.Base)
+	require.Equal(t, uusfMeta.Display, meta.Display)
+	require.Equal(t, uusfMeta.Name, meta.Name)
+	require.Equal(t, uusfMeta.Symbol, meta.Symbol)
+	require.Equal(t, uusfMeta.DenomUnits[0], meta.DenomUnits[0])
+	require.Equal(t, uusfMeta.DenomUnits[1], meta.DenomUnits[1])
 	require.Equal(t, uint64(1), res.Pagination.Total)
 }
 
@@ -188,20 +188,20 @@ func (suite *KeeperTestSuite) TestKeeper_DenomMetadata() {
 	var (
 		t        = suite.T()
 		k        = suite.app.BankKeeper
-		denom    = mertypes.MicroUSMDenom
+		denom    = wartypes.MicroUSFDenom
 		base     = denom
 		display  = base[1:]
-		uusmMeta = banktypes.Metadata{
-			Description: "The native stable token of the Merlion.",
+		uusfMeta = banktypes.Metadata{
+			Description: "The native stable token of the Warmage.",
 			DenomUnits: []*banktypes.DenomUnit{
-				{Denom: "u" + display, Exponent: uint32(0), Aliases: []string{"micro" + display}}, // e.g., uusm
+				{Denom: "u" + display, Exponent: uint32(0), Aliases: []string{"micro" + display}}, // e.g., uusf
 				{Denom: "m" + display, Exponent: uint32(3), Aliases: []string{"milli" + display}}, // e.g., musm
-				{Denom: display, Exponent: uint32(6), Aliases: []string{""}},                      // e.g., usm
+				{Denom: display, Exponent: uint32(6), Aliases: []string{""}},                      // e.g., usf
 			},
 			Base:    base,
 			Display: display,
-			Name:    strings.ToUpper(display), // e.g., USM
-			Symbol:  strings.ToUpper(display), // e.g., USM
+			Name:    strings.ToUpper(display), // e.g., USF
+			Symbol:  strings.ToUpper(display), // e.g., USF
 		}
 	)
 	res, err := k.DenomMetadata(sdk.WrapSDKContext(suite.ctx), nil)
@@ -223,11 +223,11 @@ func (suite *KeeperTestSuite) TestKeeper_DenomMetadata() {
 	res, err = k.DenomMetadata(sdk.WrapSDKContext(suite.ctx), req)
 	require.NoError(t, err)
 	meta := res.Metadata
-	require.Equal(t, uusmMeta.Description, meta.Description)
-	require.Equal(t, uusmMeta.Base, meta.Base)
-	require.Equal(t, uusmMeta.Display, meta.Display)
-	require.Equal(t, uusmMeta.Name, meta.Name)
-	require.Equal(t, uusmMeta.Symbol, meta.Symbol)
-	require.Equal(t, uusmMeta.DenomUnits[0], meta.DenomUnits[0])
-	require.Equal(t, uusmMeta.DenomUnits[1], meta.DenomUnits[1])
+	require.Equal(t, uusfMeta.Description, meta.Description)
+	require.Equal(t, uusfMeta.Base, meta.Base)
+	require.Equal(t, uusfMeta.Display, meta.Display)
+	require.Equal(t, uusfMeta.Name, meta.Name)
+	require.Equal(t, uusfMeta.Symbol, meta.Symbol)
+	require.Equal(t, uusfMeta.DenomUnits[0], meta.DenomUnits[0])
+	require.Equal(t, uusfMeta.DenomUnits[1], meta.DenomUnits[1])
 }

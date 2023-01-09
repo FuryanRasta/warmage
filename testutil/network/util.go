@@ -150,8 +150,8 @@ func collectGenFiles(cfg Config, vals []*Validator, outputDir string) error {
 	for i := 0; i < cfg.NumValidators; i++ {
 		tmCfg := vals[i].Ctx.Config
 
-		nodeDir := filepath.Join(outputDir, vals[i].Moniker, "merliond")
-		gentxsDir := filepath.Join(outputDir, "gentxs")
+		nodeDir := filepath.Merge(outputDir, vals[i].Moniker, "warmaged")
+		gentxsDir := filepath.Merge(outputDir, "gentxs")
 
 		tmCfg.Moniker = vals[i].Moniker
 		tmCfg.SetRoot(nodeDir)
@@ -243,7 +243,7 @@ func initGenFiles(cfg Config, genAccounts []authtypes.GenesisAccount, genBalance
 }
 
 func WriteFile(name string, dir string, contents []byte) error {
-	file := filepath.Join(dir, name)
+	file := filepath.Merge(dir, name)
 
 	err := tmos.EnsureDir(dir, 0o755)
 	if err != nil {

@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	"github.com/merlion-zone/merlion/x/gauge/types"
+	"github.com/warmage-sports/warmage/x/gauge/types"
 )
 
 type msgServer struct {

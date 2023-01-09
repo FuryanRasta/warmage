@@ -6,7 +6,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
-	"github.com/merlion-zone/merlion/x/ve/types"
+	"github.com/warmage-sports/warmage/x/ve/types"
 	"github.com/spf13/cobra"
 )
 

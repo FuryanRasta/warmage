@@ -9,7 +9,7 @@ parent:
 
 ## Abstract
 
-This document specifies the ve module of Merlion.
+This document specifies the ve module of Warmage.
 
 The ve module is responsible for providing voting escrow capability and distributing LION to ve holders and gauge target
 audiences each cycle according to the established distribution algorithm.

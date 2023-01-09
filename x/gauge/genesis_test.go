@@ -3,10 +3,10 @@ package gauge_test
 import (
 	"testing"
 
-	keepertest "github.com/merlion-zone/merlion/testutil/keeper"
-	"github.com/merlion-zone/merlion/testutil/nullify"
-	"github.com/merlion-zone/merlion/x/gauge"
-	"github.com/merlion-zone/merlion/x/gauge/types"
+	keepertest "github.com/warmage-sports/warmage/testutil/keeper"
+	"github.com/warmage-sports/warmage/testutil/nullify"
+	"github.com/warmage-sports/warmage/x/gauge"
+	"github.com/warmage-sports/warmage/x/gauge/types"
 	"github.com/stretchr/testify/require"
 )
 

@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/merlion-zone/merlion/x/oracle/types"
+	"github.com/warmage-sports/warmage/x/oracle/types"
 )
 
 // RewardBallotWinners gives out portion of seigniorage reward to the

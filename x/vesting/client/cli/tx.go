@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/cosmos/cosmos-sdk/client"
-	"github.com/merlion-zone/merlion/x/vesting/types"
+	"github.com/warmage-sports/warmage/x/vesting/types"
 	"github.com/spf13/cobra"
 )
 

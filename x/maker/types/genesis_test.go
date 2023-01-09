@@ -3,7 +3,7 @@ package types_test
 import (
 	"testing"
 
-	"github.com/merlion-zone/merlion/x/maker/types"
+	"github.com/warmage-sports/warmage/x/maker/types"
 	"github.com/stretchr/testify/require"
 )
 

@@ -3,8 +3,8 @@ package keeper
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/merlion-zone/merlion/x/gauge/types"
-	vetypes "github.com/merlion-zone/merlion/x/ve/types"
+	"github.com/warmage-sports/warmage/x/gauge/types"
+	vetypes "github.com/warmage-sports/warmage/x/ve/types"
 )
 
 type FeeClaimee interface {

@@ -2,9 +2,9 @@ package keeper
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	vekeeper "github.com/merlion-zone/merlion/x/ve/keeper"
-	vetypes "github.com/merlion-zone/merlion/x/ve/types"
-	"github.com/merlion-zone/merlion/x/voter/types"
+	vekeeper "github.com/warmage-sports/warmage/x/ve/keeper"
+	vetypes "github.com/warmage-sports/warmage/x/ve/types"
+	"github.com/warmage-sports/warmage/x/voter/types"
 )
 
 func (k Keeper) CreateGauge(ctx sdk.Context, depoistDenom string) {

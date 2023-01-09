@@ -3,10 +3,10 @@ package voter_test
 import (
 	"testing"
 
-	keepertest "github.com/merlion-zone/merlion/testutil/keeper"
-	"github.com/merlion-zone/merlion/testutil/nullify"
-	"github.com/merlion-zone/merlion/x/voter"
-	"github.com/merlion-zone/merlion/x/voter/types"
+	keepertest "github.com/warmage-sports/warmage/testutil/keeper"
+	"github.com/warmage-sports/warmage/testutil/nullify"
+	"github.com/warmage-sports/warmage/x/voter"
+	"github.com/warmage-sports/warmage/x/voter/types"
 	"github.com/stretchr/testify/require"
 )
 

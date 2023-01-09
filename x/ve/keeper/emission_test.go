@@ -4,7 +4,7 @@ import (
 	"math/big"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/merlion-zone/merlion/x/ve/keeper"
+	"github.com/warmage-sports/warmage/x/ve/keeper"
 )
 
 func (suite *KeeperTestSuite) TestEmitter_AddTotalEmission() {

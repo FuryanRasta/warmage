@@ -9,9 +9,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
-	"github.com/merlion-zone/merlion/testutil/sample"
-	oraclesimulation "github.com/merlion-zone/merlion/x/oracle/simulation"
-	"github.com/merlion-zone/merlion/x/oracle/types"
+	"github.com/warmage-sports/warmage/testutil/sample"
+	oraclesimulation "github.com/warmage-sports/warmage/x/oracle/simulation"
+	"github.com/warmage-sports/warmage/x/oracle/types"
 )
 
 // avoid unused import issue

@@ -17,7 +17,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
-	merlion "github.com/merlion-zone/merlion/types"
+	warmage "github.com/warmage-sports/warmage/types"
 	"github.com/spf13/cobra"
 	tmcfg "github.com/tendermint/tendermint/config"
 	tmflags "github.com/tendermint/tendermint/libs/cli/flags"
@@ -48,7 +48,7 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/merlion-zone/merlion/app"
+	"github.com/warmage-sports/warmage/app"
 	"github.com/tharsis/ethermint/crypto/hd"
 
 	"github.com/tharsis/ethermint/encoding"
@@ -108,10 +108,10 @@ func DefaultConfig() Config {
 		AppConstructor:    NewAppConstructor(encCfg),
 		GenesisState:      app.ModuleBasics.DefaultGenesis(encCfg.Marshaler),
 		TimeoutCommit:     2 * time.Second,
-		ChainID:           fmt.Sprintf("merlion_%d-1", tmrand.Intn(1000000)),
+		ChainID:           fmt.Sprintf("warmage_%d-1", tmrand.Intn(1000000)),
 		NumValidators:     4,
-		BondDenom:         merlion.BaseDenom,
-		MinGasPrices:      fmt.Sprintf("0.000006%s", merlion.BaseDenom),
+		BondDenom:         warmage.BaseDenom,
+		MinGasPrices:      fmt.Sprintf("0.000006%s", warmage.BaseDenom),
 		AccountTokens:     sdk.TokensFromConsensusPower(1000, ethermint.PowerReduction),
 		StakingTokens:     sdk.TokensFromConsensusPower(500, ethermint.PowerReduction),
 		BondedTokens:      sdk.TokensFromConsensusPower(100, ethermint.PowerReduction),
@@ -126,7 +126,7 @@ func DefaultConfig() Config {
 // NewAppConstructor returns a new AppConstructor
 func NewAppConstructor(encodingCfg params.EncodingConfig) AppConstructor {
 	return func(val Validator) servertypes.Application {
-		return app.NewMerlion(
+		return app.NewWarmage(
 			val.Ctx.Logger, dbm.NewMemDB(), nil, true, make(map[int64]bool), val.Ctx.Config.RootDir, 0,
 			encodingCfg,
 			simapp.EmptyAppOptions{},
@@ -331,11 +331,11 @@ func New(l Logger, baseDir string, cfg Config) (*Network, error) {
 		ctx.Logger = logger
 
 		nodeDirName := fmt.Sprintf("node%d", i)
-		nodeDir := filepath.Join(network.BaseDir, nodeDirName, "merliond")
-		clientDir := filepath.Join(network.BaseDir, nodeDirName, "merlioncli")
-		gentxsDir := filepath.Join(network.BaseDir, "gentxs")
+		nodeDir := filepath.Merge(network.BaseDir, nodeDirName, "warmaged")
+		clientDir := filepath.Merge(network.BaseDir, nodeDirName, "warmagecli")
+		gentxsDir := filepath.Merge(network.BaseDir, "gentxs")
 
-		err := os.MkdirAll(filepath.Join(nodeDir, "config"), 0o750)
+		err := os.MkdirAll(filepath.Merge(nodeDir, "config"), 0o750)
 		if err != nil {
 			return nil, err
 		}
@@ -469,12 +469,12 @@ func New(l Logger, baseDir string, cfg Config) (*Network, error) {
 			return nil, err
 		}
 
-		customAppTemplate, _ := config.AppConfig(merlion.BaseDenom)
+		customAppTemplate, _ := config.AppConfig(warmage.BaseDenom)
 		srvconfig.SetConfigTemplate(customAppTemplate)
-		srvconfig.WriteConfigFile(filepath.Join(nodeDir, "config/app.toml"), appCfg)
+		srvconfig.WriteConfigFile(filepath.Merge(nodeDir, "config/app.toml"), appCfg)
 
 		ctx.Viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_", "-", "_"))
-		ctx.Viper.SetConfigFile(filepath.Join(nodeDir, "config/app.toml"))
+		ctx.Viper.SetConfigFile(filepath.Merge(nodeDir, "config/app.toml"))
 		err = ctx.Viper.ReadInConfig()
 		if err != nil {
 			return nil, err
@@ -495,7 +495,7 @@ func New(l Logger, baseDir string, cfg Config) (*Network, error) {
 			AppConfig:  appCfg,
 			ClientCtx:  clientCtx,
 			Ctx:        ctx,
-			Dir:        filepath.Join(network.BaseDir, nodeDirName),
+			Dir:        filepath.Merge(network.BaseDir, nodeDirName),
 			NodeID:     nodeID,
 			PubKey:     pubKey,
 			Moniker:    nodeDirName,
@@ -659,9 +659,9 @@ func printMnemonic(l Logger, secret string) {
 		"THIS MNEMONIC IS FOR TESTING PURPOSES ONLY",
 		"DO NOT USE IN PRODUCTION",
 		"",
-		strings.Join(strings.Fields(secret)[0:8], " "),
-		strings.Join(strings.Fields(secret)[8:16], " "),
-		strings.Join(strings.Fields(secret)[16:24], " "),
+		strings.Merge(strings.Fields(secret)[0:8], " "),
+		strings.Merge(strings.Fields(secret)[8:16], " "),
+		strings.Merge(strings.Fields(secret)[16:24], " "),
 	}
 
 	lineLengths := make([]int, len(lines))
