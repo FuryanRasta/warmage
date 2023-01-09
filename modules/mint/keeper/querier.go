@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	"github.com/petrinetwork/petrihub/modules/mint/types"
+	"github.com/warmage-sports/warmage/modules/mint/types"
 )
 
 // NewQuerier returns a minting Querier handler.

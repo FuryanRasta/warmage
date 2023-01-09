@@ -1,12 +1,12 @@
 #
-# Build image: docker build -t petrinetwork/petrihub .
+# Build image: docker build -t warmage-sports/warmage .
 #
 FROM golang:1.18-alpine3.16 as builder
 
 # Set up dependencies
 ENV PACKAGES make gcc git libc-dev bash linux-headers eudev-dev
 
-WORKDIR /petrihub
+WORKDIR /warmage
 
 # Add source files
 COPY . .
@@ -27,4 +27,4 @@ EXPOSE 26657
 # metrics port
 EXPOSE 26660
 
-COPY --from=builder /petrihub/build/ /usr/local/bin/
+COPY --from=builder /warmage/build/ /usr/local/bin/

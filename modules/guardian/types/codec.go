@@ -11,8 +11,8 @@ import (
 // RegisterLegacyAminoCodec registers the necessary module/guardian interfaces and concrete types
 // on the provided Amino codec. These types are used for Amino JSON serialization.
 func RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {
-	cdc.RegisterConcrete(&MsgAddSuper{}, "petrihub/guardian/MsgAddSuper", nil)
-	cdc.RegisterConcrete(&MsgDeleteSuper{}, "petrihub/guardian/MsgDeleteSuper", nil)
+	cdc.RegisterConcrete(&MsgAddSuper{}, "warmage/guardian/MsgAddSuper", nil)
+	cdc.RegisterConcrete(&MsgDeleteSuper{}, "warmage/guardian/MsgDeleteSuper", nil)
 }
 
 func RegisterInterfaces(registry types.InterfaceRegistry) {

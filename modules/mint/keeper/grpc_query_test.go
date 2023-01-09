@@ -5,7 +5,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 
-	"github.com/petrinetwork/petrihub/modules/mint/types"
+	"github.com/warmage-sports/warmage/modules/mint/types"
 )
 
 func (suite *KeeperTestSuite) TestGRPCQueryPoolParameters() {

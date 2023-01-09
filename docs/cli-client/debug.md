@@ -6,14 +6,14 @@ A tool for simple debugging.
 
 | Name                               | Description                                          |
 | ---------------------------------- | ---------------------------------------------------- |
-| [addr](#petri-debug-addr)           | Convert an address between hex and bech32            |
-| [pubkey](#petri-debug-pubkey)       | Decode a ED25519 pubkey from hex, base64, or bech32  |
-| [raw-bytes](#petri-debug-raw-bytes) | Convert raw bytes output (eg. [10 21 13 127]) to hex |
+| [addr](#mage-debug-addr)           | Convert an address between hex and bech32            |
+| [pubkey](#mage-debug-pubkey)       | Decode a ED25519 pubkey from hex, base64, or bech32  |
+| [raw-bytes](#mage-debug-raw-bytes) | Convert raw bytes output (eg. [10 21 13 127]) to hex |
 
-### petri debug addr
+### mage debug addr
 
 ```bash
-petri debug addr iaa1rulhmls7g9cjh239vnkjnw870t5urrutsfwvmc
+mage debug addr iaa1rulhmls7g9cjh239vnkjnw870t5urrutsfwvmc
 ```
 
 returns
@@ -25,20 +25,20 @@ Bech32 Acc: iaa1rulhmls7g9cjh239vnkjnw870t5urrutsfwvmc
 Bech32 Val: iva1rulhmls7g9cjh239vnkjnw870t5urrut9cyrxl
 ```
 
-### petri debug pubkey
+### mage debug pubkey
 
 The following give the same result:
 
 ```bash
-petri debug pubkey TZTQnfqOsi89SeoXVnIw+tnFJnr4X8qVC0U8AsEmFk4=
-petri debug pubkey 4D94D09DFA8EB22F3D49EA17567230FAD9C5267AF85FCA950B453C02C126164E
+mage debug pubkey TZTQnfqOsi89SeoXVnIw+tnFJnr4X8qVC0U8AsEmFk4=
+mage debug pubkey 4D94D09DFA8EB22F3D49EA17567230FAD9C5267AF85FCA950B453C02C126164E
   ```
 
-### petri debug raw-bytes
+### mage debug raw-bytes
 
 Convert raw bytes output (eg. [10 21 13 127]) to hex
 
 ```bash
-petri debug raw-bytes <raw-bytes>
-petri debug raw-bytes "[10 21 13 127]"
+mage debug raw-bytes <raw-bytes>
+mage debug raw-bytes "[10 21 13 127]"
 ```

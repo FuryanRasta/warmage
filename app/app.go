@@ -124,16 +124,16 @@ import (
 	tokenkeeper "github.com/irisnet/irismod/modules/token/keeper"
 	tokentypes "github.com/irisnet/irismod/modules/token/types"
 
-	"github.com/petrinetwork/petrihub/address"
-	petrihubante "github.com/petrinetwork/petrihub/ante"
-	petriappparams "github.com/petrinetwork/petrihub/app/params"
-	"github.com/petrinetwork/petrihub/lite"
-	"github.com/petrinetwork/petrihub/modules/guardian"
-	guardiankeeper "github.com/petrinetwork/petrihub/modules/guardian/keeper"
-	guardiantypes "github.com/petrinetwork/petrihub/modules/guardian/types"
-	"github.com/petrinetwork/petrihub/modules/mint"
-	mintkeeper "github.com/petrinetwork/petrihub/modules/mint/keeper"
-	minttypes "github.com/petrinetwork/petrihub/modules/mint/types"
+	"github.com/warmage-sports/warmage/address"
+	warmageante "github.com/warmage-sports/warmage/ante"
+	mageappparams "github.com/warmage-sports/warmage/app/params"
+	"github.com/warmage-sports/warmage/lite"
+	"github.com/warmage-sports/warmage/modules/guardian"
+	guardiankeeper "github.com/warmage-sports/warmage/modules/guardian/keeper"
+	guardiantypes "github.com/warmage-sports/warmage/modules/guardian/types"
+	"github.com/warmage-sports/warmage/modules/mint"
+	mintkeeper "github.com/warmage-sports/warmage/modules/mint/keeper"
+	minttypes "github.com/warmage-sports/warmage/modules/mint/types"
 
 	"github.com/irisnet/irismod/modules/farm"
 	farmkeeper "github.com/irisnet/irismod/modules/farm/keeper"
@@ -154,7 +154,7 @@ import (
 	tibckeeper "github.com/bianjieai/tibc-go/modules/tibc/core/keeper"
 )
 
-const appName = "PetriApp"
+const appName = "MageApp"
 
 var (
 	// DefaultNodeHome default home directories for the application daemon
@@ -245,14 +245,14 @@ var (
 )
 
 var (
-	_ simapp.App              = (*PetriApp)(nil)
-	_ servertypes.Application = (*PetriApp)(nil)
+	_ simapp.App              = (*MageApp)(nil)
+	_ servertypes.Application = (*MageApp)(nil)
 )
 
-// PetriApp extends an ABCI application, but with most of its parameters exported.
+// MageApp extends an ABCI application, but with most of its parameters exported.
 // They are exported for convenience in creating helper functions, as object
 // capabilities aren't needed for testing.
-type PetriApp struct {
+type MageApp struct {
 	*baseapp.BaseApp
 	legacyAmino       *codec.LegacyAmino
 	appCodec          codec.Codec
@@ -325,10 +325,10 @@ func init() {
 	sdk.SetCoinDenomRegex(DefaultCoinDenomRegex)
 
 	nativeToken = tokentypes.Token{
-		Symbol:        "petri",
-		Name:          "Petrihub staking token",
+		Symbol:        "mage",
+		Name:          "Magehub staking token",
 		Scale:         6,
-		MinUnit:       "upetri",
+		MinUnit:       "umage",
 		InitialSupply: 2000000000,
 		MaxSupply:     10000000000,
 		Mintable:      true,
@@ -340,7 +340,7 @@ func init() {
 		panic(err)
 	}
 
-	DefaultNodeHome = filepath.Join(userHomeDir, ".petri")
+	DefaultNodeHome = filepath.Join(userHomeDir, ".mage")
 	owner, err := sdk.AccAddressFromBech32(nativeToken.Owner)
 	if err != nil {
 		panic(err)
@@ -363,8 +363,8 @@ func DefaultCoinDenomRegex() string {
 	return reDnmString
 }
 
-// NewPetriApp returns a reference to an initialized PetriApp.
-func NewPetriApp(
+// NewMageApp returns a reference to an initialized MageApp.
+func NewMageApp(
 	logger log.Logger,
 	db dbm.DB,
 	traceStore io.Writer,
@@ -372,10 +372,10 @@ func NewPetriApp(
 	skipUpgradeHeights map[int64]bool,
 	homePath string,
 	invCheckPeriod uint,
-	encodingConfig petriappparams.EncodingConfig,
+	encodingConfig mageappparams.EncodingConfig,
 	appOpts servertypes.AppOptions,
 	baseAppOptions ...func(*baseapp.BaseApp),
-) *PetriApp {
+) *MageApp {
 
 	// TODO: Remove cdc in favor of appCodec once all modules are migrated.
 	appCodec := encodingConfig.Marshaler
@@ -406,7 +406,7 @@ func NewPetriApp(
 		tmos.Exit(err.Error())
 	}
 
-	app := &PetriApp{
+	app := &MageApp{
 		BaseApp:           bApp,
 		legacyAmino:       legacyAmino,
 		appCodec:          appCodec,
@@ -935,8 +935,8 @@ func NewPetriApp(
 	app.MountTransientStores(tkeys)
 	app.MountMemoryStores(memKeys)
 
-	anteHandler, err := petrihubante.NewAnteHandler(
-		petrihubante.HandlerOptions{
+	anteHandler, err := warmageante.NewAnteHandler(
+		warmageante.HandlerOptions{
 			HandlerOptions: ante.HandlerOptions{
 				AccountKeeper:   app.AccountKeeper,
 				BankKeeper:      app.BankKeeper,
@@ -984,20 +984,20 @@ func NewPetriApp(
 }
 
 // Name returns the name of the App
-func (app *PetriApp) Name() string { return app.BaseApp.Name() }
+func (app *MageApp) Name() string { return app.BaseApp.Name() }
 
 // BeginBlocker application updates every begin block
-func (app *PetriApp) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
+func (app *MageApp) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
 	return app.mm.BeginBlock(ctx, req)
 }
 
 // EndBlocker application updates every end block
-func (app *PetriApp) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
+func (app *MageApp) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
 	return app.mm.EndBlock(ctx, req)
 }
 
 // InitChainer application update at chain initialization
-func (app *PetriApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
+func (app *MageApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
 	var genesisState GenesisState
 	if err := tmjson.Unmarshal(req.AppStateBytes, &genesisState); err != nil {
 		panic(err)
@@ -1017,12 +1017,12 @@ func (app *PetriApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abc
 }
 
 // LoadHeight loads a particular height
-func (app *PetriApp) LoadHeight(height int64) error {
+func (app *MageApp) LoadHeight(height int64) error {
 	return app.LoadVersion(height)
 }
 
 // ModuleAccountAddrs returns all the app's module account addresses.
-func (app *PetriApp) ModuleAccountAddrs() map[string]bool {
+func (app *MageApp) ModuleAccountAddrs() map[string]bool {
 	modAccAddrs := make(map[string]bool)
 	for acc := range maccPerms {
 		modAccAddrs[authtypes.NewModuleAddress(acc).String()] = true
@@ -1033,7 +1033,7 @@ func (app *PetriApp) ModuleAccountAddrs() map[string]bool {
 
 // BlockedModuleAccountAddrs returns all the app's blocked module account
 // addresses.
-func (app *PetriApp) BlockedModuleAccountAddrs() map[string]bool {
+func (app *MageApp) BlockedModuleAccountAddrs() map[string]bool {
 	modAccAddrs := app.ModuleAccountAddrs()
 
 	// remove module accounts that are ALLOWED to received funds
@@ -1049,59 +1049,59 @@ func (app *PetriApp) BlockedModuleAccountAddrs() map[string]bool {
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *PetriApp) LegacyAmino() *codec.LegacyAmino {
+func (app *MageApp) LegacyAmino() *codec.LegacyAmino {
 	return app.legacyAmino
 }
 
-// AppCodec returns PetriApp's app codec.
+// AppCodec returns MageApp's app codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *PetriApp) AppCodec() codec.Codec {
+func (app *MageApp) AppCodec() codec.Codec {
 	return app.appCodec
 }
 
-// InterfaceRegistry returns PetriApp's InterfaceRegistry
-func (app *PetriApp) InterfaceRegistry() types.InterfaceRegistry {
+// InterfaceRegistry returns MageApp's InterfaceRegistry
+func (app *MageApp) InterfaceRegistry() types.InterfaceRegistry {
 	return app.interfaceRegistry
 }
 
 // GetKey returns the KVStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *PetriApp) GetKey(storeKey string) *storetypes.KVStoreKey {
+func (app *MageApp) GetKey(storeKey string) *storetypes.KVStoreKey {
 	return app.keys[storeKey]
 }
 
 // GetTKey returns the TransientStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *PetriApp) GetTKey(storeKey string) *storetypes.TransientStoreKey {
+func (app *MageApp) GetTKey(storeKey string) *storetypes.TransientStoreKey {
 	return app.tkeys[storeKey]
 }
 
 // GetMemKey returns the MemStoreKey for the provided mem key.
 //
 // NOTE: This is solely used for testing purposes.
-func (app *PetriApp) GetMemKey(storeKey string) *storetypes.MemoryStoreKey {
+func (app *MageApp) GetMemKey(storeKey string) *storetypes.MemoryStoreKey {
 	return app.memKeys[storeKey]
 }
 
 // GetSubspace returns a param subspace for a given module name.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *PetriApp) GetSubspace(moduleName string) paramstypes.Subspace {
+func (app *MageApp) GetSubspace(moduleName string) paramstypes.Subspace {
 	subspace, _ := app.ParamsKeeper.GetSubspace(moduleName)
 	return subspace
 }
 
 // SimulationManager implements the SimulationApp interface
-func (app *PetriApp) SimulationManager() *module.SimulationManager {
+func (app *MageApp) SimulationManager() *module.SimulationManager {
 	return app.sm
 }
 
 // RegisterAPIRoutes registers all application module routes with the provided API server.
-func (app *PetriApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig) {
+func (app *MageApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig) {
 	clientCtx := apiSvr.ClientCtx
 	// Register new tx routes from grpc-gateway.
 	authtx.RegisterGRPCGatewayRoutes(clientCtx, apiSvr.GRPCGatewayRouter)
@@ -1118,12 +1118,12 @@ func (app *PetriApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIC
 }
 
 // RegisterTxService implements the Application.RegisterTxService method.
-func (app *PetriApp) RegisterTxService(clientCtx client.Context) {
+func (app *MageApp) RegisterTxService(clientCtx client.Context) {
 	authtx.RegisterTxService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.BaseApp.Simulate, app.interfaceRegistry)
 }
 
 // RegisterTendermintService implements the Application.RegisterTendermintService method.
-func (app *PetriApp) RegisterTendermintService(clientCtx client.Context) {
+func (app *MageApp) RegisterTendermintService(clientCtx client.Context) {
 	tmservice.RegisterTendermintService(
 		clientCtx,
 		app.BaseApp.GRPCQueryRouter(),
@@ -1133,7 +1133,7 @@ func (app *PetriApp) RegisterTendermintService(clientCtx client.Context) {
 }
 
 // RegisterUpgradeHandler implements the upgrade execution logic of the upgrade module
-func (app *PetriApp) RegisterUpgradeHandler(
+func (app *MageApp) RegisterUpgradeHandler(
 	planName string,
 	upgrades *storetypes.StoreUpgrades,
 	upgradeHandler sdkupgrade.UpgradeHandler,

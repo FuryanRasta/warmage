@@ -6,21 +6,21 @@ Auth module is responsible for specifying the base transaction and account types
 
 | Name                                | Description                       |
 | ----------------------------------- | --------------------------------- |
-| [account](#petri-query-auth-account) | Query for account by address      |
-| [params](#petri-query-auth-params)   | Query the current auth parameters |
+| [account](#mage-query-auth-account) | Query for account by address      |
+| [params](#mage-query-auth-params)   | Query the current auth parameters |
 
-### petri query auth account
+### mage query auth account
 
 Query for account by address.
 
 ```bash
-petri query auth account [flags]
+mage query auth account [flags]
 ```
 
-### petri query auth params
+### mage query auth params
 
 Query the current auth parameters.
 
 ```bash
-petri query auth params [flags]
+mage query auth params [flags]
 ```

@@ -6,9 +6,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/server"
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
-	"github.com/petrinetwork/petrihub/app"
-	"github.com/petrinetwork/petrihub/cmd/petri/cmd"
-	_ "github.com/petrinetwork/petrihub/lite/statik"
+	"github.com/warmage-sports/warmage/app"
+	"github.com/warmage-sports/warmage/cmd/mage/cmd"
+	_ "github.com/warmage-sports/warmage/lite/statik"
 )
 
 func main() {

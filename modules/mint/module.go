@@ -19,11 +19,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 
-	"github.com/petrinetwork/petrihub/modules/mint/client/cli"
-	"github.com/petrinetwork/petrihub/modules/mint/client/rest"
-	"github.com/petrinetwork/petrihub/modules/mint/keeper"
-	"github.com/petrinetwork/petrihub/modules/mint/simulation"
-	"github.com/petrinetwork/petrihub/modules/mint/types"
+	"github.com/warmage-sports/warmage/modules/mint/client/cli"
+	"github.com/warmage-sports/warmage/modules/mint/client/rest"
+	"github.com/warmage-sports/warmage/modules/mint/keeper"
+	"github.com/warmage-sports/warmage/modules/mint/simulation"
+	"github.com/warmage-sports/warmage/modules/mint/types"
 )
 
 var (

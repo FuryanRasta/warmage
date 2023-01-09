@@ -10,10 +10,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/petrinetwork/petrihub/modules/guardian"
-	"github.com/petrinetwork/petrihub/modules/guardian/keeper"
-	"github.com/petrinetwork/petrihub/modules/guardian/types"
-	"github.com/petrinetwork/petrihub/simapp"
+	"github.com/warmage-sports/warmage/modules/guardian"
+	"github.com/warmage-sports/warmage/modules/guardian/keeper"
+	"github.com/warmage-sports/warmage/modules/guardian/types"
+	"github.com/warmage-sports/warmage/simapp"
 )
 
 type TestSuite struct {

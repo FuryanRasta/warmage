@@ -1,44 +1,44 @@
 # Service
 
-Service module allows you to define, bind, invoke services on the PETRI Hub. [Read more about iService](../features/service.md).
+Service module allows you to define, bind, invoke services on the MAGE Hub. [Read more about iService](../features/service.md).
 
 ## 可用命令
 
 | Name                                                    | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------------ |
-| [define](#petri-tx-service-define)                       | Define a new service                                               |
-| [definition](#petri-query-service-definition)            | Query a service definition                                         |
-| [bind](#petri-tx-service-bind)                           | Bind a service                                                     |
-| [binding](#petri-query-service-binding)                  | Query a service binding                                            |
-| [bindings](#petri-query-service-bindings)                | Query all bindings of a service definition                         |
-| [set-withdraw-addr](#petri-tx-service-set-withdraw-addr) | Set a withdrawal address for a provider                            |
-| [withdraw-addr](#petri-query-service-withdraw-addr)      | Query the withdrawal address of a provider                         |
-| [update-binding](#petri-tx-service-update-binding)       | Update an existing service binding                                 |
-| [disable](#petri-tx-service-disable)                     | Disable an available service binding                               |
-| [enable](#petri-tx-service-enable)                       | Enable an unavailable service binding                              |
-| [refund-deposit](#petri-tx-service-refund-deposit)       | Refund all deposit from a service binding                          |
-| [call](#petri-tx-service-call)                           | Initiate a service call                                            |
-| [request](#petri-query-service-request)                  | Query a request by the request ID                                  |
-| [requests](#petri-query-service-requests)                | Query active requests by the service binding or request context ID |
-| [respond](#petri-tx-service-respond)                     | Respond to a service request                                       |
-| [response](#petri-query-service-response)                | Query a response by the request ID                                 |
-| [responses](#petri-query-service-responses)              | Query active responses by the request context ID and batch counter |
-| [request-context](#petri-query-service-request-context)  | Query a request context                                            |
-| [update](#petri-tx-service-update)                       | Update a request context                                           |
-| [pause](#petri-tx-service-pause)                         | Pause a running request context                                    |
-| [start](#petri-tx-service-start)                         | Start a paused request context                                     |
-| [kill](#petri-tx-service-kill)                           | Terminate a request context                                        |
-| [fees](#petri-query-service-fees)                        | Query the earned fees of a provider                                |
-| [withdraw-fees](#petri-tx-service-withdraw-fees)         | Withdraw the earned fees of a provider                             |
-| [schema](#petri-query-service-schema)                    | Query the system schema by the schema name                         |
-| [params](#petri-query-service-params)                    | Query values set as service parameters.                            |
+| [define](#mage-tx-service-define)                       | Define a new service                                               |
+| [definition](#mage-query-service-definition)            | Query a service definition                                         |
+| [bind](#mage-tx-service-bind)                           | Bind a service                                                     |
+| [binding](#mage-query-service-binding)                  | Query a service binding                                            |
+| [bindings](#mage-query-service-bindings)                | Query all bindings of a service definition                         |
+| [set-withdraw-addr](#mage-tx-service-set-withdraw-addr) | Set a withdrawal address for a provider                            |
+| [withdraw-addr](#mage-query-service-withdraw-addr)      | Query the withdrawal address of a provider                         |
+| [update-binding](#mage-tx-service-update-binding)       | Update an existing service binding                                 |
+| [disable](#mage-tx-service-disable)                     | Disable an available service binding                               |
+| [enable](#mage-tx-service-enable)                       | Enable an unavailable service binding                              |
+| [refund-deposit](#mage-tx-service-refund-deposit)       | Refund all deposit from a service binding                          |
+| [call](#mage-tx-service-call)                           | Initiate a service call                                            |
+| [request](#mage-query-service-request)                  | Query a request by the request ID                                  |
+| [requests](#mage-query-service-requests)                | Query active requests by the service binding or request context ID |
+| [respond](#mage-tx-service-respond)                     | Respond to a service request                                       |
+| [response](#mage-query-service-response)                | Query a response by the request ID                                 |
+| [responses](#mage-query-service-responses)              | Query active responses by the request context ID and batch counter |
+| [request-context](#mage-query-service-request-context)  | Query a request context                                            |
+| [update](#mage-tx-service-update)                       | Update a request context                                           |
+| [pause](#mage-tx-service-pause)                         | Pause a running request context                                    |
+| [start](#mage-tx-service-start)                         | Start a paused request context                                     |
+| [kill](#mage-tx-service-kill)                           | Terminate a request context                                        |
+| [fees](#mage-query-service-fees)                        | Query the earned fees of a provider                                |
+| [withdraw-fees](#mage-tx-service-withdraw-fees)         | Withdraw the earned fees of a provider                             |
+| [schema](#mage-query-service-schema)                    | Query the system schema by the schema name                         |
+| [params](#mage-query-service-params)                    | Query values set as service parameters.                            |
 
-## petri tx service define
+## mage tx service define
 
 Define a new service.
 
 ```bash
-petri tx service define [flags]
+mage tx service define [flags]
 ```
 
 **Flags:**
@@ -54,15 +54,15 @@ petri tx service define [flags]
 ### define a service
 
 ```bash
-petri tx service define \
+mage tx service define \
     --name=<service name> \
     --description=<service description> \
     --author-description=<author description>
     --tags=tag1,tag2 \
     --schemas=<schemas content or path/to/schemas.json> \
-    --chain-id=petrihub \
+    --chain-id=warmage \
     --from=<key-name> \
-    --fees=0.3petri
+    --fees=0.3mage
 ```
 
 ### Schemas content example
@@ -111,12 +111,12 @@ petri tx service define \
 }
 ```
 
-## petri query service definition
+## mage query service definition
 
 Query a service definition.
 
 ```bash
-petri query service definition [service-name] [flags]
+mage query service definition [service-name] [flags]
 ```
 
 ### Query a service definition
@@ -124,15 +124,15 @@ petri query service definition [service-name] [flags]
 Query the detailed info of the service definition with the specified service name.
 
 ```bash
-petri query service definition <service name>
+mage query service definition <service name>
 ```
 
-## petri tx service bind
+## mage tx service bind
 
 Bind a service.
 
 ```bash
-petri tx service bind [flags]
+mage tx service bind [flags]
 ```
 
 **Flags:**
@@ -141,7 +141,7 @@ petri tx service bind [flags]
 | --------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------- | -------- |
 | --service-name  |         | Service name                                                                                                                  | Yes      |
 | --deposit       |         | Deposit of the binding                                                                                                        | Yes      |
-| --pricing       |         | Pricing content or file path, which is an instance of [Petrihub Service Pricing JSON Schema](../features/service-pricing.json) | Yes      |
+| --pricing       |         | Pricing content or file path, which is an instance of [Magehub Service Pricing JSON Schema](../features/service-pricing.json) | Yes      |
 | --qos           |         | Minimum response time                                                                                                         | Yes      |
 | --options       |         | Non-functional requirements options                                                                                           | Yes      |
 | --provider      |         | Provider address, default to the owner                                                                                        |          |
@@ -151,53 +151,53 @@ petri tx service bind [flags]
 The deposit needs to satisfy the minimum deposit requirement, which is the maximal one between `price` * `MinDepositMultiple` and `MinDeposit` (`MinDepositMultiple` and `MinDeposit` are the system parameters, which can be modified through the governance).
 
 ```bash
-petri tx service bind \
+mage tx service bind \
     --service-name=<service name> \
-    --deposit=10000petri \
+    --deposit=10000mage \
     --pricing=<pricing content or path/to/pricing.json> \
     --qos=50 \
     --options=<non-functional requirements options content or path/to/options.json> \
-    --chain-id=petrihub \
+    --chain-id=warmage \
     --from=<key-name> \
-    --fees=0.3petri
+    --fees=0.3mage
 ```
 
 ### Pricing content example
 
 ```json
 {
-    "price": "1petri"
+    "price": "1mage"
 }
 ```
 
-## petri query service binding
+## mage query service binding
 
 Query a service binding.
 
 ```bash
-petri query service binding <service name> <provider>
+mage query service binding <service name> <provider>
 ```
 
-## petri query service bindings
+## mage query service bindings
 
 Query all bindings of a service definition.
 
 ```bash
-petri query service bindings [service-name] [flags]
+mage query service bindings [service-name] [flags]
 ```
 
 ### Query service binding list
 
 ```bash
-petri query service bindings <service name> <owner address>
+mage query service bindings <service name> <owner address>
 ```
 
-## petri tx service update-binding
+## mage tx service update-binding
 
 Update a service binding.
 
 ```bash
-petri tx service update-binding [service-name] [provider-address] [flags]
+mage tx service update-binding [service-name] [provider-address] [flags]
 ```
 
 **Flags:**
@@ -205,55 +205,55 @@ petri tx service update-binding [service-name] [provider-address] [flags]
 | Name, shorthand | Default | Description                                                                                                                                       | Required |
 | --------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | --deposit       |         | Deposit added for the binding, not updated if empty                                                                                               |          |
-| --pricing       |         | Pricing content or file path, which is an instance of [Petrihub Service Pricing JSON Schema](../features/service-pricing.md), not updated if empty |          |
+| --pricing       |         | Pricing content or file path, which is an instance of [Magehub Service Pricing JSON Schema](../features/service-pricing.md), not updated if empty |          |
 | --qos           |         | Minimum response time, not updated if set to 0                                                                                                    |          |
 | --options       |         | Non-functional requirements options                                                                                                               |          |
 
 ### Update an existing service binding
 
-The following example updates the service binding with the additional 10 PETRI deposit
+The following example updates the service binding with the additional 10 MAGE deposit
 
 ```bash
-petri tx service update-binding <service-name> <provider-address> \
-    --deposit=10petri \
+mage tx service update-binding <service-name> <provider-address> \
+    --deposit=10mage \
     --options=<non-functional requirements options content or path/to/options.json> \
-    --pricing='{"price":"1petri"}' \
+    --pricing='{"price":"1mage"}' \
     --qos=50 \
     --chain-id=<chain-id> \
     --from=<key name> \
-    --fees=0.3petri
+    --fees=0.3mage
 ```
 
-## petri tx service set-withdraw-addr
+## mage tx service set-withdraw-addr
 
 Set a withdrawal address for a provider.
 
 ```bash
-petri tx service set-withdraw-addr [withdrawal-address] [flags]
+mage tx service set-withdraw-addr [withdrawal-address] [flags]
 ```
 
-## petri query service withdraw-addr
+## mage query service withdraw-addr
 
 Query the withdrawal address of a provider.
 
 ```bash
-petri query service withdraw-addr [provider] [flags]
+mage query service withdraw-addr [provider] [flags]
 ```
 
-## petri tx service disable
+## mage tx service disable
 
 Disable an available service binding.
 
 ```bash
-petri tx service disable [service-name] [provider-address] [flags]
+mage tx service disable [service-name] [provider-address] [flags]
 ```
 
-## petri tx service enable
+## mage tx service enable
 
 Enable an unavailable service binding.
 
 ```bash
-petri tx service enable [service-name] [provider-address] [flags]
+mage tx service enable [service-name] [provider-address] [flags]
 ```
 
 **Flags:**
@@ -264,34 +264,34 @@ petri tx service enable [service-name] [provider-address] [flags]
 
 ### Enable an unavailable service binding
 
-The following example enables an unavailable service binding with the additional 10 PETRI deposit.
+The following example enables an unavailable service binding with the additional 10 MAGE deposit.
 
 ```bash
-petri tx service enable <service name> <provider-address> --chain-id=petrihub --from=<key-name> --fees=0.3petri --deposit=10petri
+mage tx service enable <service name> <provider-address> --chain-id=warmage --from=<key-name> --fees=0.3mage --deposit=10mage
 ```
 
-## petri tx service refund-deposit
+## mage tx service refund-deposit
 
 Refund all deposits from a service binding.
 
 ```bash
-petri tx service refund-deposit [service-name] [provider-address] [flags]
+mage tx service refund-deposit [service-name] [provider-address] [flags]
 ```
 
 ### Refund all deposits from an unavailable service binding
 
-Before refunding, you should [disable](#petri-tx-service-disable) the service binding first.
+Before refunding, you should [disable](#mage-tx-service-disable) the service binding first.
 
 ```bash
-petri tx service refund-deposit <service name> <provider-address> --chain-id=petrihub --from=<key-name> --fees=0.3petri
+mage tx service refund-deposit <service name> <provider-address> --chain-id=warmage --from=<key-name> --fees=0.3mage
 ```
 
-## petri tx service call
+## mage tx service call
 
 Initiate a service call.
 
 ```bash
-petri tx service call [flags]
+mage tx service call [flags]
 ```
 
 **Flags:**
@@ -303,25 +303,25 @@ petri tx service call [flags]
 | --service-fee-cap |         | Maximum service fee to pay for a single request                                                                        | Yes      |
 | --data            |         | Content or file path of the request input, which is an Input JSON Schema instance                                      | Yes      |
 | --timeout         |         | Request timeout                                                                                                        | Yes      |
-| --repeated        | false   | Indicate if the reqeust is repetitive (Temporarily disabled in petrihub-v1.0.0, will be activated after a few versions) |          |
+| --repeated        | false   | Indicate if the reqeust is repetitive (Temporarily disabled in warmage-v1.0.0, will be activated after a few versions) |          |
 | --frequency       |         | Request frequency when repeated, default to `timeout`                                                                  |          |
 | --total           |         | Request count when repeated, -1 means unlimited                                                                        |          |
 
 ### Initiate a service invocation request
 
 ```bash
-petri tx service call \
+mage tx service call \
     --service-name=<service name> \
     --providers=<provider list> \
-    --service-fee-cap=1petri \
+    --service-fee-cap=1mage \
     --data=<request input or path/to/input.json> \
     --timeout=100 \
     --repeated \
     --frequency=150 \
     --total=100 \
-    --chain-id=petrihub \
+    --chain-id=warmage \
     --from=<key name> \
-    --fees=0.3petri
+    --fees=0.3mage
 ```
 
 ### Input example
@@ -333,28 +333,28 @@ petri tx service call \
     },
     "body": {
         "id": "1",
-        "name": "petrinetwork",
+        "name": "irisnet",
         "data": "facedata"
     }
 }
 ```
 
-## petri query service request
+## mage query service request
 
 Query a request by the request ID.
 
 ```bash
-petri query service request [request-id] [flags]
+mage query service request [request-id] [flags]
 ```
 
 ### Query a service request
 
 ```bash
-petri query service request <request-id>
+mage query service request <request-id>
 ```
 
 :::tip
-You can retrieve the `request-id` in [Query request_id through rpc interface](#Query request_id through rpc interface) or [petri query service requests](#petri query service requests).
+You can retrieve the `request-id` in [Query request_id through rpc interface](#Query request_id through rpc interface) or [mage query service requests](#mage query service requests).
 :::
 
 ### Query request_id through rpc interface
@@ -365,32 +365,32 @@ Query `block_results` according to `block height` through `rpc interface`, find 
 curl -X POST -d '{"jsonrpc":"2.0","id":1,"method":"block_results","params":["10604"]}' http://localhost:26657
 ```
 
-## petri query service requests
+## mage query service requests
 
 Query active requests by the service binding or request context ID.
 
 ```bash
-petri query service requests [service-name] [provider] | [request-context-id] [batch-counter] [flags]
+mage query service requests [service-name] [provider] | [request-context-id] [batch-counter] [flags]
 ```
 
 ### Query active requests of a service binding
 
 ```bash
-petri query service requests <service name> <provider>
+mage query service requests <service name> <provider>
 ```
 
 ### Query service requests by the request context ID and batch counter
 
 ```bash
-petri query service requests <request-context-id> <batch-counter>
+mage query service requests <request-context-id> <batch-counter>
 ```
 
-## petri tx service respond
+## mage tx service respond
 
 Respond to a service request.
 
 ```bash
-petri tx service respond [flags]
+mage tx service respond [flags]
 ```
 
 **Flags:**
@@ -398,23 +398,23 @@ petri tx service respond [flags]
 | Name, shorthand | Default | Description                                                                                                                                | Required |
 | --------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
 | --request-id    |         | ID of the request to respond to                                                                                                            | Yes      |
-| --result        |         | Content or file path of the response result, which is an instance of [Petrihub Service Result JSON Schema](../features/service-result.json) | Yes      |
+| --result        |         | Content or file path of the response result, which is an instance of [Magehub Service Result JSON Schema](../features/service-result.json) | Yes      |
 | --data          |         | Content or file path of the response output, which is an Output JSON Schema instance                                                       |          |
 
 ### Respond to a service request
 
 ```bash
-petri tx service respond \
+mage tx service respond \
     --request-id=<request-id> \
     --result=<response result or path/to/result.json> \
     --data=<response output or path/to/output.json>
-    --chain-id=petrihub \
+    --chain-id=warmage \
     --from=<key-name> \
-    --fees=0.3petri
+    --fees=0.3mage
 ```
 
 :::tip
-You can retrieve the `request-id` in [Query request_id through rpc interface](#Query request_id through rpc interface) or [petri query service requests](#petri query service requests).
+You can retrieve the `request-id` in [Query request_id through rpc interface](#Query request_id through rpc interface) or [mage query service requests](#mage query service requests).
 :::
 
 ### Result example
@@ -439,56 +439,56 @@ You can retrieve the `request-id` in [Query request_id through rpc interface](#Q
 }
 ```
 
-## petri query service response
+## mage query service response
 
 Query a service response.
 
 ```bash
-petri query service response [request-id] [flags]
+mage query service response [request-id] [flags]
 ```
 
 :::tip
-You can retrieve the `request-id` in [Query request_id through rpc interface](#Query request_id through rpc interface) or [petri query service requests](#petri query service requests).
+You can retrieve the `request-id` in [Query request_id through rpc interface](#Query request_id through rpc interface) or [mage query service requests](#mage query service requests).
 :::
 
-## petri query service responses
+## mage query service responses
 
 Query active responses by the request context ID and batch counter.
 
 ```bash
-petri query service responses [request-context-id] [batch-counter] [flags]
+mage query service responses [request-context-id] [batch-counter] [flags]
 ```
 
 ### Query responses by the request context ID and batch counter
 
 ```bash
-petri query service responses <request-context-id> <batch-counter>
+mage query service responses <request-context-id> <batch-counter>
 ```
 
-## petri query service request-context
+## mage query service request-context
 
 Query a request context.
 
 ```bash
-petri query service request-context [request-context-id] [flags]
+mage query service request-context [request-context-id] [flags]
 ```
 
 ### Query a request context
 
 ```bash
-petri query service request-context <request-context-id>
+mage query service request-context <request-context-id>
 ```
 
 :::tip
-You can retrieve the `request-context-id` in the result of [service call](#petri-tx-service-call)
+You can retrieve the `request-context-id` in the result of [service call](#mage-tx-service-call)
 :::
 
-## petri tx service update
+## mage tx service update
 
 Update a request context.
 
 ```bash
-petri tx service update [request-context-id] [flags]
+mage tx service update [request-context-id] [flags]
 ```
 
 **Flags:**
@@ -504,99 +504,99 @@ petri tx service update [request-context-id] [flags]
 ### Update a request context
 
 ```bash
-petri tx service update <request-context-id> \
+mage tx service update <request-context-id> \
     --providers=<provider list> \
-    --service-fee-cap=1petri \
+    --service-fee-cap=1mage \
     --timeout=0 \
     --frequency=150 \
     --total=100 \
-    --chain-id=petrihub \
+    --chain-id=warmage \
     --from=<key name> \
-    --fees=0.3petri
+    --fees=0.3mage
 ```
 
-## petri tx service pause
+## mage tx service pause
 
 Pause a running request context.
 
 ```bash
-petri tx service pause [request-context-id] [flags]
+mage tx service pause [request-context-id] [flags]
 ```
 
 ### Pause a running request context
 
 ```bash
-petri tx service pause <request-context-id>
+mage tx service pause <request-context-id>
 ```
 
-## petri tx service start
+## mage tx service start
 
 Start a paused request context.
 
 ```bash
-petri tx service start [request-context-id] [flags]
+mage tx service start [request-context-id] [flags]
 ```
 
 ### Start a paused request context
 
 ```bash
-petri tx service start <request-context-id>
+mage tx service start <request-context-id>
 ```
 
-## petri tx service kill
+## mage tx service kill
 
 Terminate a request context.
 
 ```bash
-petri tx service kill [request-context-id] [flags]
+mage tx service kill [request-context-id] [flags]
 ```
 
 ### Kill a request context
 
 ```bash
-petri tx service kill <request-context-id>
+mage tx service kill <request-context-id>
 ```
 
-## petri query service fees
+## mage query service fees
 
 Query the earned fees of a provider.
 
 ```bash
-petri query service fees [provider] [flags]
+mage query service fees [provider] [flags]
 ```
 
-## petri tx service withdraw-fees
+## mage tx service withdraw-fees
 
 Withdraw the earned fees of a provider.
 
 ```bash
-petri tx service withdraw-fees [provider-address] [flags]
+mage tx service withdraw-fees [provider-address] [flags]
 ```
 
-## petri query service schema
+## mage query service schema
 
 Query the system schema by the schema name, only pricing and result allowed.
 
 ```bash
-petri query service schema [schema-name] [flags]
+mage query service schema [schema-name] [flags]
 ```
 
 ### Query the service pricing schema
 
 ```bash
-petri query service schema pricing
+mage query service schema pricing
 ```
 
 ### Query the response result schema
 
 ```bash
-petri query service schema result
+mage query service schema result
 ```
 
-## petri query service params
+## mage query service params
 
 Query values set as service parameters.
 
 ```bash
-petri query service params [flags]
+mage query service params [flags]
 ```

@@ -12,16 +12,16 @@ There are the following states involved in the lifecycle of an HTLC:
 
 | Name                           | Description              |
 | ------------------------------ | ------------------------ |
-| [create](#petri-tx-htlc-create) | Create an HTLC           |
-| [claim](#petri-tx-htlc-claim)   | Claim an opened HTLC     |
-| [htlc](#petri-query-htlc-htlc)  | Query details of an HTLC |
+| [create](#mage-tx-htlc-create) | Create an HTLC           |
+| [claim](#mage-tx-htlc-claim)   | Claim an opened HTLC     |
+| [htlc](#mage-query-htlc-htlc)  | Query details of an HTLC |
 
-## petri tx htlc create
+## mage tx htlc create
 
 Create an HTLC
 
 ```bash
-petri tx htlc create \
+mage tx htlc create \
     --to=<recipient> \
     --receiver-on-other-chain=<receiver-on-other-chain> \
     --sender-on-other-chain=<sender-on-other-chain> \
@@ -48,42 +48,42 @@ petri tx htlc create \
 | --timestamp               | uint   |          |         | The timestamp in seconds for generating hash lock if provided                                         |
 | --transfer                | bool   |          | false   | Whether it is an HTLT transaction                                                                     |
 
-## petri tx htlc claim
+## mage tx htlc claim
 
 Claim an opened HTLC
 
 ```bash
-petri tx htlc claim [id] [secret] [flags] --from=mykey
+mage tx htlc claim [id] [secret] [flags] --from=mykey
 ```
 
-## petri query htlc htlc
+## mage query htlc htlc
 
 Query details of an HTLC
 
 ```bash
-petri query htlc htlc <id>
+mage query htlc htlc <id>
 ```
 
-## petri query htlc params
+## mage query htlc params
 
 Query params of HTLC module
 
 ```bash
-petri query htlc params
+mage query htlc params
 ```
 
-## petri query htlc supplies
+## mage query htlc supplies
 
 Query supplies of all HTLT assets
 
 ```bash
-petri query htlc supplies
+mage query htlc supplies
 ```
 
-## petri query htlc supply
+## mage query htlc supply
 
 Query supply of an HTLT asset
 
 ```bash
-petri query htlc supply [denom]
+mage query htlc supply [denom]
 ```

@@ -1,4 +1,4 @@
-module github.com/petrinetwork/petrihub
+module github.com/warmage-sports/warmage
 
 go 1.18
 

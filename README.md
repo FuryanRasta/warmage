@@ -1,26 +1,26 @@
-# PETRIhub
+# MAGEhub
 
-![Banner](https://raw.githubusercontent.com/petrinetwork/petrihub/master/docs/pics/petri.jpg)
+![Banner](https://raw.githubusercontent.com/warmage-sports/warmage/master/docs/pics/mage.jpg)
 
-[![License](https://img.shields.io/github/license/petrinetwork/petrihub.svg)](https://github.com/petrinetwork/petrihub/blob/master/LICENSE)
-[![Version](https://img.shields.io/github/tag/petrinetwork/petrihub.svg)](https://github.com/petrinetwork/petrihub/releases)
-[![Go Report Card](https://goreportcard.com/badge/github.com/petrinetwork/petrihub)](https://goreportcard.com/report/github.com/petrinetwork/petrihub)
-[![Forum](https://img.shields.io/discourse/https/forum.petrinetwork.org/topics.svg)](https://forum.petrinetwork.org/)
+[![License](https://img.shields.io/github/license/warmage-sports/warmage.svg)](https://github.com/warmage-sports/warmage/blob/master/LICENSE)
+[![Version](https://img.shields.io/github/tag/warmage-sports/warmage.svg)](https://github.com/warmage-sports/warmage/releases)
+[![Go Report Card](https://goreportcard.com/badge/github.com/warmage-sports/warmage)](https://goreportcard.com/report/github.com/warmage-sports/warmage)
+[![Forum](https://img.shields.io/discourse/https/forum.irisnet.org/topics.svg)](https://forum.irisnet.org/)
 
-PETRI network (a.k.a. PETRInetwork) aims to establish a technology foundation to facilitate construction of next-generation distributed applications. By incorporating a comprehensive service infrastructure and an enhanced IBC protocol into the Tendermint & Cosmos stack, PETRInetwork enables service interoperability as well as token transfers across an internet of blockchains.
-As the centerpiece of PETRInetwork, PETRI Hub (a.k.a. PETRIhub) will be the first regional hub connecting to the main Cosmos Hub, thus making PETRInetwork an inseparable part of the whole Cosmos network.
+MAGE network (a.k.a. MAGEnetwork) aims to establish a technology foundation to facilitate construction of next-generation distributed applications. By incorporating a comprehensive service infrastructure and an enhanced IBC protocol into the Tendermint & Cosmos stack, MAGEnetwork enables service interoperability as well as token transfers across an internet of blockchains.
+As the centerpiece of MAGEnetwork, MAGE Hub (a.k.a. MAGEhub) will be the first regional hub connecting to the main Cosmos Hub, thus making MAGEnetwork an inseparable part of the whole Cosmos network.
 
-## PETRI Hub Mainnet
+## MAGE Hub Mainnet
 
-To join the mainnet, follow [this guide](https://www.petrinetwork.org/docs/get-started/mainnet.html).
+To join the mainnet, follow [this guide](https://www.irisnet.org/docs/get-started/mainnet.html).
 
 ## Install
 
-See the [install instructions](https://www.petrinetwork.org/docs/get-started/install.html).
+See the [install instructions](https://www.irisnet.org/docs/get-started/install.html).
 
 ## Resources
 
-* Explorer: <https://petrihub.iobscan.io/>
+* Explorer: <https://warmage.iobscan.io/>
 * Discord: <https://discord.gg/rUVw3RWfKp>
 
 ## How To Contribute

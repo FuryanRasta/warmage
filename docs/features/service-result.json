@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "petri-service-result",
-    "description": "PETRI Service Result Schema",
+    "title": "mage-service-result",
+    "description": "MAGE Service Result Schema",
     "type": "object",
     "properties": {
         "code": {

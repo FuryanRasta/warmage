@@ -40,12 +40,12 @@ module.exports = {
     locales: {
         "/": {
             lang: "en-US",
-            title: "PETRInetwork Documents",
-            description: "PETRInetwork Documents",
+            title: "MAGEnetwork Documents",
+            description: "MAGEnetwork Documents",
         }
     },
     themeConfig: {
-        repo: "petrinetwork/petrihub",
+        repo: "warmage-sports/warmage",
         docsDir: "docs",
         editLinks: true,
         docsBranch: "master",
@@ -55,8 +55,8 @@ module.exports = {
                 editLinkText: 'Help us improve this page!',
                 nav: [
                     {
-                        text: 'Back to PETRInetwork',
-                        link: 'https://www.petrinetwork.org'
+                        text: 'Back to MAGEnetwork',
+                        link: 'https://www.irisnet.org'
                     }
                 ],
                 sidebar: sidebar("", [

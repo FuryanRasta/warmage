@@ -6,39 +6,39 @@ Slashing module can unjail validator previously jailed for downtime
 
 | Name                                                | Description                                     |
 | --------------------------------------------------- | ----------------------------------------------- |
-| [unjail](#petri-tx-slashing-unjail)                  | Unjail validator previously jailed for downtime |
-| [params](#petri-query-slashing-params)               | Query the current slashing parameters           |
-| [signing-info](#petri-query-slashing-signing-info)   | Query a validator's signing information         |
-| [signing-infos](#petri-query-slashing-signing-infos) | Query signing information of all validators     |
+| [unjail](#mage-tx-slashing-unjail)                  | Unjail validator previously jailed for downtime |
+| [params](#mage-query-slashing-params)               | Query the current slashing parameters           |
+| [signing-info](#mage-query-slashing-signing-info)   | Query a validator's signing information         |
+| [signing-infos](#mage-query-slashing-signing-infos) | Query signing information of all validators     |
 
-## petri tx slashing unjail
+## mage tx slashing unjail
 
 Unjail validator previously jailed for downtime.
 
 ```bash
-petri tx slashing unjail [flags]
+mage tx slashing unjail [flags]
 ```
 
-## petri query slashing params
+## mage query slashing params
 
 Query the current slashing parameters.
 
 ```bash
-petri query slashing params  [flags]
+mage query slashing params  [flags]
 ```
 
-## petri query slashing signing-info
+## mage query slashing signing-info
 
 Query a validator's signing information.
 
 ```bash
-petri query slashing signing-info [validator-conspub] [flags]
+mage query slashing signing-info [validator-conspub] [flags]
 ```
 
-## petri query slashing signing-infos
+## mage query slashing signing-infos
 
 Query signing information of all validators.
 
 ```bash
-petri query slashing signing-infos [flags]
+mage query slashing signing-infos [flags]
 ```

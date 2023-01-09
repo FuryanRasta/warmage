@@ -33,8 +33,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/crisis"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 
-	"github.com/petrinetwork/petrihub/app"
-	"github.com/petrinetwork/petrihub/app/params"
+	"github.com/warmage-sports/warmage/app"
+	"github.com/warmage-sports/warmage/app/params"
 )
 
 // NewRootCmd creates a new root command for simd. It is called once in the
@@ -53,8 +53,8 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		WithViper("")
 
 	rootCmd := &cobra.Command{
-		Use:   "petri",
-		Short: "PETRI Hub app command",
+		Use:   "mage",
+		Short: "MAGE Hub app command",
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 			initClientCtx, err := client.ReadPersistentCommandFlags(initClientCtx, cmd.Flags())
 			if err != nil {
@@ -72,9 +72,9 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 
 			converter.handlePreRun(cmd, args)
 
-			customTemplate, customPETRIhubConfig := initAppConfig()
+			customTemplate, customMAGEhubConfig := initAppConfig()
 			customTMConfig := initTendermintConfig()
-			return server.InterceptConfigsPreRunHandler(cmd, customTemplate, customPETRIhubConfig, customTMConfig)
+			return server.InterceptConfigsPreRunHandler(cmd, customTemplate, customMAGEhubConfig, customTMConfig)
 		},
 		PersistentPostRun: func(cmd *cobra.Command, _ []string) {
 			converter.handlePostRun(cmd)
@@ -230,7 +230,7 @@ func (ac appCreator) newApp(logger log.Logger, db dbm.DB, traceStore io.Writer, 
 		cast.ToUint32(appOpts.Get(server.FlagStateSyncSnapshotKeepRecent)),
 	)
 
-	return app.NewPetriApp(
+	return app.NewMageApp(
 		logger, db, traceStore, true, skipUpgradeHeights,
 		cast.ToString(appOpts.Get(flags.FlagHome)),
 		cast.ToUint(appOpts.Get(server.FlagInvCheckPeriod)),
@@ -250,7 +250,7 @@ func (ac appCreator) newApp(logger log.Logger, db dbm.DB, traceStore io.Writer, 
 	)
 }
 
-// createPetriappAndExport creates a new petriapp (optionally at a given height) and exports state.
+// createMageappAndExport creates a new mageapp (optionally at a given height) and exports state.
 func (ac appCreator) appExport(
 	logger log.Logger,
 	db dbm.DB,
@@ -272,7 +272,7 @@ func (ac appCreator) appExport(
 		loadLatest = true
 	}
 
-	petriApp := app.NewPetriApp(
+	mageApp := app.NewMageApp(
 		logger,
 		db,
 		traceStore,
@@ -285,10 +285,10 @@ func (ac appCreator) appExport(
 	)
 
 	if height != -1 {
-		if err := petriApp.LoadHeight(height); err != nil {
+		if err := mageApp.LoadHeight(height); err != nil {
 			return servertypes.ExportedApp{}, err
 		}
 	}
 
-	return petriApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
+	return mageApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
 }
