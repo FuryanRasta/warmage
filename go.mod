@@ -1,4 +1,4 @@
-merlinmodule github.com/warmage-sports/warmage
+module github.com/warmage-sports/warmage
 
 go 1.18
 
